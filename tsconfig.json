@@ -1,0 +1,3 @@
+{
+  "extends": "@vooster/typescript/base.json"
+}
