@@ -2,8 +2,6 @@
   "version": 2,
   "public": false,
   "github": {
-    "deploymentEnabled": {
-      "main": false
-    }
+    "enabled": false
   }
 }
