@@ -13,16 +13,12 @@ export default function Page() {
       <div className="absolute -top-[118px] inset-0 bg-[linear-gradient(to_right,#222_1px,transparent_1px),linear-gradient(to_bottom,#222_1px,transparent_1px)] bg-[size:4.5rem_2rem] -z-10 [transform:perspective(1000px)_rotateX(-63deg)] h-[80%] pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent pointer-events-none -z-10" />
 
-      <h1 className="font-departure text-[40px] md:text-[84px] relative z-10 text-center h-[120px] md:h-auto leading-tight">
-        <AnimatedText text="Production ready code" />
+      <h1 className="font-sans text-[40px] md:text-[84px] relative z-10 text-center h-[120px] md:h-auto leading-tight">
+        <AnimatedText text="Contextualized strategies" />
       </h1>
 
-      <p className="relative z-10 text-center max-w-[80%] mt-0 md:mt-4">
-        An open-source starter kit based on{" "}
-        <a href="https://midday.ai?utm_source=vooster" className="underline">
-          Midday
-        </a>
-        .
+      <p className="font-mono relative z-10 text-center max-w-[80%] mt-0 md:mt-4">
+        Coming soon
       </p>
 
       {/* In process */}
@@ -30,11 +26,11 @@ export default function Page() {
         Security verified by Kenshū.
       </span> */}
 
-      <div className="mt-10 mb-8">
+      {/* <div className="mt-10 mb-8">
         <CopyText value="bunx degit midday-ai/vooster v1" />
-      </div>
+      </div> */}
 
-      <TooltipProvider delayDuration={0}>
+      {/* <TooltipProvider delayDuration={0}>
         <Tooltip>
           <TooltipTrigger asChild>
             <a
@@ -69,7 +65,7 @@ export default function Page() {
             Show HN: vooster – An open-source starter kit for your next project
           </TooltipContent>
         </Tooltip>
-      </TooltipProvider>
+      </TooltipProvider> */}
 
       <div className="absolute -bottom-[280px] inset-0 bg-[linear-gradient(to_right,#222_1px,transparent_1px),linear-gradient(to_bottom,#222_1px,transparent_1px)] bg-[size:4.5rem_2rem] -z-10 [transform:perspective(560px)_rotateX(63deg)] pointer-events-none" />
       <div className="absolute w-full bottom-[100px] h-1/2  bg-gradient-to-b from-background to-transparent pointer-events-none -z-10" />

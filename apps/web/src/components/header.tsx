@@ -15,7 +15,7 @@ import { SubscribeForm } from "./subscribe-form";
 export function Header() {
   return (
     <header className="absolute top-0 w-full flex items-center justify-between p-4 z-10">
-      <span className="hidden md:block text-sm font-medium">vooster.run</span>
+      <span className="hidden md:block text-sm font-medium">vooster.app</span>
 
       <Link href="/">
         <Image
@@ -28,7 +28,7 @@ export function Header() {
         />
       </Link>
 
-      <nav className="md:mt-2">
+      {/* <nav className="md:mt-2">
         <ul className="flex items-center gap-4">
           <li>
             <a
@@ -65,7 +65,7 @@ export function Header() {
             </Dialog>
           </li>
         </ul>
-      </nav>
+      </nav> */}
     </header>
   );
 }
