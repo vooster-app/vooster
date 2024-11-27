@@ -95,28 +95,3 @@ VALUES
     '2024-09-01 17:21:01.459849+00',
     'c5e81668-437b-47c2-83e2-84b8566b3018'
   );
-
--- Seed data for posts
-INSERT INTO
-  posts (user_id, title, content)
-VALUES
-  (
-    'aec53558-767e-4408-b4d6-1c1e6f17ffe5',
-    'React Server Components: A Game Changer',
-    'React Server Components are revolutionizing how we build React applications. They allow for better performance and smaller bundle sizes by running components on the server. This new paradigm is especially powerful when combined with frameworks like Next.js 13+.'
-  ),
-  (
-    'aec53558-767e-4408-b4d6-1c1e6f17ffe5',
-    'The Rise of Bun: A New JavaScript Runtime',
-    'Bun is gaining traction as a fast all-in-one JavaScript runtime. It aims to replace Node.js, npm, yarn, and more. With its focus on performance and developer experience, Bun is definitely worth keeping an eye on in 2024.'
-  ),
-  (
-    'aec53558-767e-4408-b4d6-1c1e6f17ffe5',
-    'TypeScript 5.0: What''s New and Exciting',
-    'TypeScript 5.0 brings several new features and improvements, including decorators, const type parameters, and more. These enhancements continue to make TypeScript an essential tool for building robust JavaScript applications.'
-  ),
-  (
-    'aec53558-767e-4408-b4d6-1c1e6f17ffe5',
-    'The State of JavaScript Frameworks in 2024',
-    'While React remains dominant, frameworks like Svelte and Solid are gaining popularity for their performance and simplicity. Meanwhile, meta-frameworks like Next.js and Remix are becoming increasingly important in the React ecosystem.'
-  );

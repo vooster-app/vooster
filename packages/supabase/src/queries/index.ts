@@ -19,7 +19,7 @@ export async function getPosts() {
   const supabase = createClient();
 
   try {
-    const result = await supabase.from("posts").select("*");
+    const result = await supabase.from("chats").select("*");
 
     return result;
   } catch (error) {
