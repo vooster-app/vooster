@@ -7,11 +7,59 @@ import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 
+const metadataBase = new URL("https://www.vooster.app");
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.vooster.app"),
+  metadataBase: metadataBase,
   title: "Create vooster",
   description:
-    "A free, open-source starter kit for your next project, built with insights from Midday.",
+    "A pawefull LLM prompting tool. Create knowledge bases for contextualized prompting.",
+  alternates: {
+    canonical: metadataBase,
+    languages: {
+      "en-US": metadataBase,
+    },
+  },
+  robots: "index, follow",
+  openGraph: {
+    title: "Vooster | Empower your strategies with knowledge",
+    description:
+      "A pawefull LLM prompting tool. Create knowledge bases for contextualized prompting.",
+    url: metadataBase,
+    siteName:
+      "A pawefull LLM prompting tool. Create knowledge bases for contextualized prompting.",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://www.vooster.app/opengraph-image.png",
+        width: 800,
+        height: 600,
+      },
+      {
+        url: "https://www.vooster.app/opengraph-image.png",
+        width: 1800,
+        height: 1600,
+      },
+    ],
+  },
+  twitter: {
+    title: "Vooster | Empower your strategies with knowledge",
+    description:
+      "A pawefull LLM prompting tool. Create knowledge bases for contextualized prompting.",
+    images: [
+      {
+        url: "https://www.vooster.app/twitter-image.png",
+        width: 800,
+        height: 600,
+      },
+      {
+        url: "https://www.vooster.app/twitter-image.png",
+        width: 1800,
+        height: 1600,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -24,7 +72,7 @@ export default function RootLayout({
       <body
         className={cn(
           `${GeistSans.variable} ${GeistMono.variable}`,
-          "antialiased dark",
+          "antialiased dark"
         )}
       >
         <Header />
