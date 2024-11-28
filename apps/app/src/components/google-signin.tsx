@@ -16,8 +16,8 @@ export function GoogleSignin() {
   };
 
   return (
-    <Button onClick={handleSignin} variant="outline" className="font-mono">
-      Sign in with Google
+    <Button onClick={handleSignin} size={"xl"} className="font-mono">
+      Continue with Google
     </Button>
   );
 }

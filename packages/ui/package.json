@@ -26,7 +26,9 @@
     "./globals.css": "./src/globals.css",
     "./cn": "./src/utils/cn.ts",
     "./button": "./src/components/button.tsx",
+    "./form": "./src/components/form.tsx",
     "./input": "./src/components/input.tsx",
+    "./label": "./src/components/label.tsx",
     "./tooltip": "./src/components/tooltip.tsx",
     "./dialog": "./src/components/dialog.tsx",
     "./icons": "./src/components/icons.tsx",
@@ -34,12 +36,16 @@
     "./postcss": "./postcss.config.js"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.1",
     "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.2",
     "class-variance-authority": "^0.7.0",
     "lucide-react": "^0.438.0",
+    "react-hook-form": "^7.53.2",
     "tailwind-merge": "^2.5.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.23.8"
   }
 }
