@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
+import { Provider as AnalyticsProvider } from "@vooster/analytics/client";
 
 export const metadata: Metadata = {
   title: "Create vooster",
@@ -28,7 +29,7 @@ export default function RootLayout({
       <body
         className={cn(
           `${GeistSans.variable} ${GeistMono.variable}`,
-          "antialiased",
+          "antialiased"
         )}
       >
         <ThemeProvider
@@ -40,6 +41,7 @@ export default function RootLayout({
           {children}
 
           <Footer />
+          <AnalyticsProvider />
         </ThemeProvider>
       </body>
     </html>
