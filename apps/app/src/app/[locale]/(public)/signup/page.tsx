@@ -1,4 +1,3 @@
-import { Button } from "@vooster/ui/button";
 import Image from "next/image";
 import { SignUpAction } from "./signup-buttons";
 
@@ -18,7 +17,7 @@ export default function Page() {
           height={48}
           quality={50}
         />
-        <SignUpAction />
+        <SignUpAction action="signup" />
       </div>
     </div>
   );

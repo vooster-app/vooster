@@ -1,5 +1,5 @@
-import { GoogleSignin } from "@/components/google-signin";
 import Image from "next/image";
+import { SignUpAction } from "../signup/signup-buttons";
 
 export const metadata = {
   title: "Vooster",
@@ -8,7 +8,7 @@ export const metadata = {
 export default function Page() {
   return (
     <div className="h-screen w-screen flex flex-col items-center justify-center">
-      <div className="flex flex-col items-center justify-center size-96">
+      <div className="flex flex-col flex-initial items-center justify-center size-96">
         <Image
           src="/icon.png"
           className="mb-8"
@@ -17,7 +17,7 @@ export default function Page() {
           height={48}
           quality={50}
         />
-        <GoogleSignin />
+        <SignUpAction action="login" />
       </div>
     </div>
   );

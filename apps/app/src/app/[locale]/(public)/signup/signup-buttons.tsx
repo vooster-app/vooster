@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@vooster/ui/button";
-import { Input } from "@vooster/ui/input";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@vooster/ui/cn";
@@ -36,7 +35,11 @@ const MotionWrapper = ({
   </motion.div>
 );
 
-export function SignUpAction() {
+export function SignUpAction({
+  action = "login",
+}: {
+  action: "login" | "signup";
+}) {
   const [signUpState, setSignUpState] = useState<SignUpT>({ value: null });
 
   const DynamicContent = () => {
@@ -44,7 +47,7 @@ export function SignUpAction() {
       return (
         <MotionWrapper>
           <span className="text-2xl font-semibold text-neutral-200 mb-6 text-center">
-            Create your workspace
+            {action === "login" ? "Login to Vooster" : "Create your workspace"}
           </span>
           <Button size={"xl"}>Continue with Google</Button>
           <Button
@@ -54,27 +57,31 @@ export function SignUpAction() {
           >
             Continue with email
           </Button>
-          <div className="flex flex-col w-full mt-6">
-            <div className="w-full text-center text-sm">
-              <span className="text-primary/70">
-                By signing up you agree to our{" "}
-              </span>
-              <Link className="hover:underline" href="/terms">
-                Terms of Service
-              </Link>
-              <span className="text-primary/70"> and </span>
-              <Link className="hover:underline" href="/dpa">
-                Data Processing Agreement
-              </Link>
+          {action === "signup" && (
+            <div className="flex flex-col w-full mt-6">
+              <div className="w-full text-center text-sm">
+                <span className="text-primary/70">
+                  By signing up you agree to our{" "}
+                </span>
+                <Link className="hover:underline" href="/terms">
+                  Terms of Service
+                </Link>
+                <span className="text-primary/70"> and </span>
+                <Link className="hover:underline" href="/dpa">
+                  Data Processing Agreement
+                </Link>
+              </div>
+              <span className="w-full my-3 text-center">&#95;</span>
+              <div className="w-full text-center text-sm">
+                <span className="text-primary/70">
+                  Already have an account?{" "}
+                </span>
+                <Link className="hover:underline" href="/terms">
+                  Login &rarr;
+                </Link>
+              </div>
             </div>
-            <span className="w-full my-3 text-center">&#95;</span>
-            <div className="w-full text-center text-sm">
-              <span className="text-primary/70">Already have an account? </span>
-              <Link className="hover:underline" href="/terms">
-                Login &rarr;
-              </Link>
-            </div>
-          </div>
+          )}
         </MotionWrapper>
       );
     } else if (signUpState.value === "google") {
@@ -98,7 +105,7 @@ export function SignUpAction() {
             variant={"link"}
             size={"xl"}
           >
-            Back to signup
+            Back to {action === "login" ? "login" : "signup"}
           </Button>
         </MotionWrapper>
       );
