@@ -41,13 +41,14 @@ export type Database = {
           },
         ]
       }
-      directories: {
+      items: {
         Row: {
           collection_id: string | null
           created_at: string
           id: string
           name: string
-          parent_directory_id: string | null
+          parent_item_id: string | null
+          type: string
           updated_at: string
         }
         Insert: {
@@ -55,7 +56,8 @@ export type Database = {
           created_at?: string
           id?: string
           name: string
-          parent_directory_id?: string | null
+          parent_item_id?: string | null
+          type?: string
           updated_at?: string
         }
         Update: {
@@ -63,7 +65,8 @@ export type Database = {
           created_at?: string
           id?: string
           name?: string
-          parent_directory_id?: string | null
+          parent_item_id?: string | null
+          type?: string
           updated_at?: string
         }
         Relationships: [
@@ -76,9 +79,9 @@ export type Database = {
           },
           {
             foreignKeyName: "fk_directory_parent"
-            columns: ["parent_directory_id"]
+            columns: ["parent_item_id"]
             isOneToOne: false
-            referencedRelation: "directories"
+            referencedRelation: "items"
             referencedColumns: ["id"]
           },
         ]
@@ -123,27 +126,24 @@ export type Database = {
           collection_id: string | null
           content: string
           created_at: string
-          directory_id: string | null
           id: string
-          title: string
+          item_id: string | null
           updated_at: string
         }
         Insert: {
           collection_id?: string | null
           content: string
           created_at?: string
-          directory_id?: string | null
           id?: string
-          title: string
+          item_id?: string | null
           updated_at?: string
         }
         Update: {
           collection_id?: string | null
           content?: string
           created_at?: string
-          directory_id?: string | null
           id?: string
-          title?: string
+          item_id?: string | null
           updated_at?: string
         }
         Relationships: [
@@ -155,10 +155,10 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "fk_page_directory"
-            columns: ["directory_id"]
+            foreignKeyName: "fk_page_item"
+            columns: ["item_id"]
             isOneToOne: false
-            referencedRelation: "directories"
+            referencedRelation: "items"
             referencedColumns: ["id"]
           },
         ]
@@ -227,7 +227,18 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_items_by_collection: {
+        Args: {
+          pcollection_id: string
+        }
+        Returns: {
+          id: string
+          name: string
+          type: string
+          parent_item_id: string
+          collection_id: string
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never

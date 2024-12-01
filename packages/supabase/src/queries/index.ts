@@ -1,29 +1,65 @@
-import { logger } from "@vooster/logger";
 import { createClient } from "@vooster/supabase/server";
 
-export async function getUser() {
+export async function getUserQuery() {
   const supabase = createClient();
 
-  try {
-    const result = await supabase.auth.getUser();
-
-    return result;
-  } catch (error) {
-    logger.error(error);
-
-    throw error;
-  }
+  return supabase.auth.getUser();
 }
 
-export async function getPosts() {
+export async function getChatsByUserQuery(userId: string) {
   const supabase = createClient();
 
-  try {
-    const result = await supabase.from("chats").select("*");
+  return supabase
+    .from("chats")
+    .select("*")
+    .eq("user_id", userId)
+    .throwOnError();
+}
 
-    return result;
-  } catch (error) {
-    logger.error(error);
-    throw error;
-  }
+export async function getCollectionByUserQuery(userId: string) {
+  const supabase = createClient();
+
+  return supabase
+    .from("user_collections")
+    .select("*")
+    .eq("user_id", userId)
+    .throwOnError();
+}
+
+export async function getPagesByCollectionQuery(collectionId: string) {
+  const supabase = createClient();
+
+  return supabase
+    .from("pages")
+    .select("*")
+    .eq("collection_id", collectionId)
+    .throwOnError();
+}
+
+export async function getItemsByCollectionQuery(collectionId: string) {
+  const supabase = createClient();
+
+  return supabase
+    .from("items")
+    .select("*")
+    .eq("collection_id", collectionId)
+    .throwOnError();
+}
+
+export async function getAllItemsByCollectionQuery(collectionId: string) {
+  const supabase = createClient();
+
+  return supabase
+    .rpc("get_items_by_collection", { pcollection_id: collectionId })
+    .throwOnError();
+}
+
+export async function getMessagesByChatQuery(chatId: string) {
+  const supabase = createClient();
+
+  return supabase
+    .from("messages")
+    .select("*")
+    .eq("chat_id", chatId)
+    .throwOnError();
 }
