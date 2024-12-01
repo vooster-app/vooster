@@ -2,7 +2,7 @@ import * as Sentry from "@sentry/nextjs";
 import { setupAnalytics } from "@vooster/analytics/server";
 import { ratelimit } from "@vooster/kv/ratelimit";
 import { logger } from "@vooster/logger";
-import { getUser } from "@vooster/supabase/queries";
+import { getUserQuery } from "@vooster/supabase/queries";
 import { createClient } from "@vooster/supabase/server";
 import {
   DEFAULT_SERVER_ERROR_MESSAGE,
@@ -58,7 +58,7 @@ export const authActionClient = actionClientWithMeta
     const ip = headers().get("x-forwarded-for");
 
     const { success, remaining } = await ratelimit.limit(
-      `${ip}-${metadata.name}`,
+      `${ip}-${metadata.name}`
     );
 
     if (!success) {
@@ -76,7 +76,7 @@ export const authActionClient = actionClientWithMeta
   .use(async ({ next, metadata }) => {
     const {
       data: { user },
-    } = await getUser();
+    } = await getUserQuery();
     const supabase = createClient();
 
     if (!user) {
