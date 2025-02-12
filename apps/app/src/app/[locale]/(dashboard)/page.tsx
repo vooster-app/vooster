@@ -1,13 +1,13 @@
 import { SignOut } from "@/components/sign-out";
 import { getI18n } from "@/locales/server";
-import { getUser } from "@vooster/supabase/queries";
+import { getUserQuery } from "@vooster/supabase/queries";
 
 export const metadata = {
   title: "Home",
 };
 
 export default async function Page() {
-  const { data } = await getUser();
+  const { data } = await getUserQuery();
   const t = await getI18n();
 
   return (

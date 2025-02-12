@@ -1,11 +1,19 @@
 import Image from "next/image";
 import { SignUpAction } from "./signup-buttons";
+import { redirect } from "next/navigation";
+import { getUserQuery } from "@vooster/supabase/queries";
 
 export const metadata = {
   title: "Vooster",
 };
 
-export default function Page() {
+export default async function Page() {
+  const { data } = await getUserQuery();
+
+  if (data?.user) {
+    return redirect("/");
+  }
+
   return (
     <div className="h-screen w-screen flex flex-col items-center justify-center">
       <div className="flex flex-col flex-initial items-center justify-center size-96">

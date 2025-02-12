@@ -49,7 +49,7 @@ export function SignUpAction({
           <span className="text-2xl font-semibold text-neutral-200 mb-6 text-center">
             {action === "login" ? "Login to Vooster" : "Create your workspace"}
           </span>
-          <Button size={"xl"}>Continue with Google</Button>
+          <GoogleSignin />
           <Button
             onClick={() => setSignUpState({ value: "email" })}
             variant={"secondary"}
@@ -76,7 +76,7 @@ export function SignUpAction({
                 <span className="text-primary/70">
                   Already have an account?{" "}
                 </span>
-                <Link className="hover:underline" href="/terms">
+                <Link className="hover:underline" href="/login">
                   Login &rarr;
                 </Link>
               </div>
@@ -131,7 +131,7 @@ export function SignUpAction({
             variant={"link"}
             size={"xl"}
           >
-            Back to signup
+            Back to {action === "login" ? "login" : "signup"}
           </Button>
         </MotionWrapper>
       );
