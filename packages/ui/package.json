@@ -59,7 +59,8 @@
     "./tooltip": "./src/components/tooltip.tsx",
     "./icons": "./src/components/icons.tsx",
     "./tailwind.config": "./tailwind.config.ts",
-    "./postcss": "./postcss.config.js"
+    "./postcss": "./postcss.config.js",
+    "./hooks/use-mobile": "./src/hooks/use-mobile.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -87,6 +88,7 @@
     "react-hook-form": "^7.53.2",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
+    "sonner": "^2.0.3",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8"
