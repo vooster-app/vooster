@@ -22,6 +22,7 @@
   "exports": {
     "./server": "./src/clients/server.ts",
     "./client": "./src/clients/client.ts",
+    "./cached-queries": "./src/queries/cached-queries.ts",
     "./mutations": "./src/mutations/index.ts",
     "./middleware": "./src/clients/middleware.ts",
     "./queries": "./src/queries/index.ts",

@@ -41,6 +41,142 @@ export type Database = {
           },
         ]
       }
+      interview_answers: {
+        Row: {
+          answer_text: string
+          answered_at: string
+          created_at: string
+          id: string
+          turn_id: string
+          updated_at: string
+          version: number
+        }
+        Insert: {
+          answer_text: string
+          answered_at?: string
+          created_at?: string
+          id?: string
+          turn_id: string
+          updated_at?: string
+          version?: number
+        }
+        Update: {
+          answer_text?: string
+          answered_at?: string
+          created_at?: string
+          id?: string
+          turn_id?: string
+          updated_at?: string
+          version?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "interview_answers_turn_id_fkey"
+            columns: ["turn_id"]
+            isOneToOne: false
+            referencedRelation: "interview_turns"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      interview_turns: {
+        Row: {
+          created_at: string
+          example_answer_text: string | null
+          id: string
+          interview_id: string
+          question_text: string
+          turn_no: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          example_answer_text?: string | null
+          id?: string
+          interview_id: string
+          question_text: string
+          turn_no: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          example_answer_text?: string | null
+          id?: string
+          interview_id?: string
+          question_text?: string
+          turn_no?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "interview_turns_interview_id_fkey"
+            columns: ["interview_id"]
+            isOneToOne: false
+            referencedRelation: "interviews"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      interviews: {
+        Row: {
+          created_at: string
+          finished_at: string | null
+          id: string
+          item_id: string | null
+          metadata: Json | null
+          model_used: string | null
+          seed_input: string
+          started_at: string
+          status: Database["public"]["Enums"]["interview_status"]
+          total_token_cost: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          finished_at?: string | null
+          id?: string
+          item_id?: string | null
+          metadata?: Json | null
+          model_used?: string | null
+          seed_input: string
+          started_at?: string
+          status?: Database["public"]["Enums"]["interview_status"]
+          total_token_cost?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          finished_at?: string | null
+          id?: string
+          item_id?: string | null
+          metadata?: Json | null
+          model_used?: string | null
+          seed_input?: string
+          started_at?: string
+          status?: Database["public"]["Enums"]["interview_status"]
+          total_token_cost?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "interviews_item_id_fkey"
+            columns: ["item_id"]
+            isOneToOne: false
+            referencedRelation: "items"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "interviews_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       items: {
         Row: {
           collection_id: string | null
@@ -241,7 +377,7 @@ export type Database = {
       }
     }
     Enums: {
-      [_ in never]: never
+      interview_status: "IN_PROGRESS" | "DONE" | "ABORTED"
     }
     CompositeTypes: {
       [_ in never]: never
