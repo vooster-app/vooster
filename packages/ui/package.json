@@ -5,21 +5,22 @@
   "sideEffects": false,
   "files": [
     "tailwind.config.ts",
-    "postcss.config.js",
+    "postcss.config.mjs",
     "globals.css"
   ],
   "scripts": {
+    "build": "tailwindcss -i ./src/globals.css -o ./dist/globals.css",
     "clean": "rm -rf .turbo node_modules",
     "lint": "biome check .",
     "format": "biome --write .",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.6",
     "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.43",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tailwindcss": "^3.4.10",
+    "tailwindcss": "^4",
     "typescript": "^5.5.4"
   },
   "exports": {
@@ -59,7 +60,7 @@
     "./tooltip": "./src/components/tooltip.tsx",
     "./icons": "./src/components/icons.tsx",
     "./tailwind.config": "./tailwind.config.ts",
-    "./postcss": "./postcss.config.js",
+    "./postcss.config": "./postcss.config.mjs",
     "./hooks/use-mobile": "./src/hooks/use-mobile.ts"
   },
   "dependencies": {
@@ -90,7 +91,7 @@
     "remark-gfm": "^4.0.1",
     "sonner": "^2.0.3",
     "tailwind-merge": "^2.5.2",
-    "tailwindcss-animate": "^1.0.7",
+    "tw-animate-css": "^1.2.9",
     "zod": "^3.23.8"
   }
 }
