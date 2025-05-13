@@ -7,8 +7,8 @@
     Project started with <a href="https://github.com/midday-ai/v1">v1</a>.
     <br />
     <br />
-    <a href="https://v1.run"><strong>Website</strong></a> · 
-    <a href="https://github.com/midday-ai/v1/issues"><strong>Issues</strong></a> · 
+    <a href="https://www.vooster.app"><strong>Website</strong></a> · 
+    <a href="https://github.com/vooster-app/vooster/issues"><strong>Issues</strong></a> · 
     <a href="#whats-included"><strong>What's included</strong></a> ·
     <a href="#prerequisites"><strong>Prerequisites</strong></a> ·
     <a href="#getting-started"><strong>Getting Started</strong></a> ·
