@@ -1,0 +1,9 @@
+ALTER TABLE
+	pages
+ALTER COLUMN
+	title DROP NOT NULL;
+
+ALTER TABLE
+	pages
+ALTER COLUMN
+	content DROP NOT NULL;
