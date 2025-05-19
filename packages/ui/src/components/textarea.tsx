@@ -4,7 +4,7 @@ import { cn } from "@vooster/ui/cn";
 import { type VariantProps, cva } from "class-variance-authority";
 
 const textareaVariants = cva(
-  "flex field-sizing-content min-h-16 w-full rounded-md bg-transparent text-base shadow-xs transition-[color,box-shadow] outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+  "flex field-sizing-content min-h-16 w-full rounded-md bg-transparent text-base transition-[color,box-shadow] outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
   {
     variants: {
       variant: {
@@ -16,7 +16,7 @@ const textareaVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  }
+  },
 );
 
 function Textarea({
