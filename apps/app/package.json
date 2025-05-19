@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
+    "@tailwindcss/postcss": "^4.1.6",
+    "@tanstack/react-query": "^5.76.1",
     "@vooster/analytics": "workspace:*",
     "@vooster/kv": "workspace:*",
     "@vooster/supabase": "workspace:*",
