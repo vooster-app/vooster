@@ -10,26 +10,34 @@ create table public.users (
 );
 
 -- enable row level security (rls)
-alter table public.users enable row level security;
+alter table
+    public.users enable row level security;
 
 -- create a trigger to update the updated_at column
-create or replace function update_updated_at()
-returns trigger as $$
-begin
-    new.updated_at = now();
-    return new;
-end;
-$$ language plpgsql;
+create
+or replace function update_updated_at() returns trigger as $ $ begin new.updated_at = now();
 
-create trigger users_updated_at
-before update on public.users
-for each row
-execute function update_updated_at();
+return new;
+
+end;
+
+$ $ language plpgsql;
+
+create trigger users_updated_at before
+update
+    on public.users for each row execute function update_updated_at();
 
 -- create a policy to allow users to read their own profile
-create policy select_own_profile on public.users
-for select using (auth.uid() = id);
+create policy select_own_profile on public.users for
+select
+    using (auth.uid() = id);
 
 -- create a policy to allow users to update their own profile
-create policy update_own_profile on public.users
-for update using (auth.uid() = id);
+create policy update_own_profile on public.users for
+update
+    using (auth.uid() = id);
+
+-- create a policy to allow the service role to insert user records
+create policy insert_service_role on public.users for
+insert
+    to service_role with check (true);
