@@ -1,11 +1,11 @@
+import "../../globals.css";
 import "@vooster/ui/globals.css";
-import { Footer } from "@/components/footer";
+import { Provider as AnalyticsProvider } from "@vooster/analytics/client";
 import { cn } from "@vooster/ui/cn";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
-import { Provider as AnalyticsProvider } from "@vooster/analytics/client";
 
 export const metadata: Metadata = {
   title: "Create vooster",
@@ -26,10 +26,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+				<meta
+					name="viewport"
+					content="width=device-width, initial-scale=1, maximum-scale=1"
+				/>
+			</head>
       <body
         className={cn(
           `${GeistSans.variable} ${GeistMono.variable}`,
-          "antialiased"
+          "antialiased",
         )}
       >
         <ThemeProvider
@@ -39,8 +45,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
-
-          <Footer />
           <AnalyticsProvider />
         </ThemeProvider>
       </body>
