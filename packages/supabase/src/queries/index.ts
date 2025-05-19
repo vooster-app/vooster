@@ -1,13 +1,11 @@
+"server-only";
+
 import type { Client } from "../types";
 
 export async function getUserQuery(supabase: Client, userId: string) {
   return supabase
     .from("users")
-    .select(
-      `
-      *
-      `,
-    )
+    .select("*")
     .eq("id", userId)
     .single()
     .throwOnError();
@@ -43,6 +41,10 @@ export async function getPagesByCollectionQuery(
     .throwOnError();
 }
 
+export async function getPageByIdQuery(supabase: Client, pageId: string) {
+  return supabase.from("pages").select("*").eq("id", pageId).single();
+}
+
 export async function getItemsByCollectionQuery(
   supabase: Client,
   collectionId: string,
@@ -71,7 +73,10 @@ export async function getMessagesByChatQuery(supabase: Client, chatId: string) {
     .throwOnError();
 }
 
-export async function getInterviewsByUserQuery(supabase: Client, userId: string) {
+export async function getInterviewsByUserQuery(
+  supabase: Client,
+  userId: string,
+) {
   return supabase
     .from("interviews")
     .select("*")
@@ -79,10 +84,44 @@ export async function getInterviewsByUserQuery(supabase: Client, userId: string)
     .throwOnError();
 }
 
-export async function getInterviewByIdQuery(supabase: Client, interviewId: string) {
+export async function getCompletedInterviewsByInterviewIdQuery(
+  supabase: Client,
+  interviewId: string,
+) {
   return supabase
     .from("interviews")
-    .select("*")
+    .select(`
+      *,
+      interview_turns (
+        id,
+        question_text,
+        example_answer_text,
+        turn_no,
+        answer_text
+      )
+    `)
+    .eq("id", interviewId)
+    .eq("status", "DONE")
+    .single()
+    .throwOnError();
+}
+
+export async function getInterviewByIdQuery(
+  supabase: Client,
+  interviewId: string,
+) {
+  return supabase
+    .from("interviews")
+    .select(`
+      *,
+      interview_turns (
+        id,
+        question_text,
+        example_answer_text,
+        turn_no,
+        answer_text
+      )
+    `)
     .eq("id", interviewId)
     .single()
     .throwOnError();
@@ -100,27 +139,24 @@ export async function getInterviewTurnsByInterviewQuery(
     .throwOnError();
 }
 
-export async function getInterviewAnswersByTurnQuery(
-  supabase: Client,
-  turnId: string,
-) {
+export async function getSidebarDataQuery(supabase: Client, userId: string) {
   return supabase
-    .from("interview_answers")
-    .select("*")
-    .eq("turn_id", turnId)
-    .order("version", { ascending: false })
-    .throwOnError();
-}
-
-export async function getLatestInterviewAnswerByTurnQuery(
-  supabase: Client,
-  turnId: string,
-) {
-  return supabase
-    .from("interview_answers")
-    .select("*")
-    .eq("turn_id", turnId)
-    .eq("version", 1)
-    .single()
+    .from("user_collections")
+    .select(`
+      id,
+      name,
+      items!inner (
+        id,
+        name,
+        type,
+        parent_item_id,
+        pages (
+          id,
+          title
+        )
+      )
+    `)
+    .eq("user_id", userId)
+    .order("name")
     .throwOnError();
 }

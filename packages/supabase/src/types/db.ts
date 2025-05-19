@@ -41,46 +41,11 @@ export type Database = {
           },
         ]
       }
-      interview_answers: {
-        Row: {
-          answer_text: string
-          answered_at: string
-          created_at: string
-          id: string
-          turn_id: string
-          updated_at: string
-          version: number
-        }
-        Insert: {
-          answer_text: string
-          answered_at?: string
-          created_at?: string
-          id?: string
-          turn_id: string
-          updated_at?: string
-          version?: number
-        }
-        Update: {
-          answer_text?: string
-          answered_at?: string
-          created_at?: string
-          id?: string
-          turn_id?: string
-          updated_at?: string
-          version?: number
-        }
-        Relationships: [
-          {
-            foreignKeyName: "interview_answers_turn_id_fkey"
-            columns: ["turn_id"]
-            isOneToOne: false
-            referencedRelation: "interview_turns"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
       interview_turns: {
         Row: {
+          answer_text: string | null
+          answer_version: number
+          answered_at: string | null
           created_at: string
           example_answer_text: string | null
           id: string
@@ -90,6 +55,9 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          answer_text?: string | null
+          answer_version?: number
+          answered_at?: string | null
           created_at?: string
           example_answer_text?: string | null
           id?: string
@@ -99,6 +67,9 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          answer_text?: string | null
+          answer_version?: number
+          answered_at?: string | null
           created_at?: string
           example_answer_text?: string | null
           id?: string
@@ -260,26 +231,29 @@ export type Database = {
       pages: {
         Row: {
           collection_id: string | null
-          content: string
+          content: string | null
           created_at: string
           id: string
           item_id: string | null
+          title: string | null
           updated_at: string
         }
         Insert: {
           collection_id?: string | null
-          content: string
+          content?: string | null
           created_at?: string
           id?: string
           item_id?: string | null
+          title?: string | null
           updated_at?: string
         }
         Update: {
           collection_id?: string | null
-          content?: string
+          content?: string | null
           created_at?: string
           id?: string
           item_id?: string | null
+          title?: string | null
           updated_at?: string
         }
         Relationships: [

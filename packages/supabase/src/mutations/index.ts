@@ -54,11 +54,23 @@ export async function deleteCollectionByUser(supabase: Client, userId: string) {
 }
 
 type SavePageData = {
-  content: string;
+  id?: string;
+  title: string | null;
+  content: string | null;
+  collection_id: string;
+  item_id?: string | null;
 };
 
 export async function savePage(supabase: Client, data: SavePageData) {
-  return supabase.from("pages").insert(data);
+  return supabase.from("pages").insert(data).select().single();
+}
+
+export async function updatePage(
+  supabase: Client,
+  id: string,
+  data: Partial<SavePageData>,
+) {
+  return supabase.from("pages").update(data).eq("id", id).select().single();
 }
 
 interface SaveFolderData {
@@ -135,10 +147,7 @@ export async function updateInterviewMetadata(
   interviewId: string,
   metadata: Json,
 ) {
-  return supabase
-    .from("interviews")
-    .update({ metadata })
-    .eq("id", interviewId);
+  return supabase.from("interviews").update({ metadata }).eq("id", interviewId);
 }
 
 interface CreateInterviewTurnData {
@@ -146,59 +155,12 @@ interface CreateInterviewTurnData {
   turn_no: number;
   question_text: string;
   example_answer_text?: string;
+  answer_text?: string;
 }
 
 export async function createInterviewTurn(
   supabase: Client,
   data: CreateInterviewTurnData,
 ) {
-  return supabase
-    .from("interview_turns")
-    .insert(data)
-    .select()
-    .single();
-}
-
-interface CreateInterviewAnswerData {
-  turn_id: string;
-  answer_text: string;
-}
-
-export async function createInterviewAnswer(
-  supabase: Client,
-  data: CreateInterviewAnswerData,
-) {
-  return supabase
-    .from("interview_answers")
-    .insert({
-      ...data,
-      version: 1,
-    })
-    .select()
-    .single();
-}
-
-export async function updateInterviewAnswer(
-  supabase: Client,
-  turnId: string,
-  answerText: string,
-) {
-  // First, get the current answers to find max version
-  const { data: answers } = await supabase
-    .from("interview_answers")
-    .select("version")
-    .eq("turn_id", turnId);
-
-  const maxVersion = answers?.length ? Math.max(...answers.map(a => a.version)) : 0;
-
-  // Then create new answer with incremented version
-  return supabase
-    .from("interview_answers")
-    .insert({
-      turn_id: turnId,
-      answer_text: answerText,
-      version: maxVersion + 1,
-    })
-    .select()
-    .single();
+  return supabase.from("interview_turns").insert(data).select().single();
 }
