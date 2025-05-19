@@ -1,17 +1,18 @@
 "use client";
 
-import { Button } from "@vooster/ui/button";
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@vooster/ui/cn";
-import Link from "next/link";
-import { GoogleSignin } from "@/components/google-signin";
 import { EmailSignupForm } from "@/components/email-signup-form";
+import { GoogleSignin } from "@/components/google-signin";
+import { Button } from "@vooster/ui/button";
+import { cn } from "@vooster/ui/cn";
+import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
+import type React from "react";
+import { useState } from "react";
 
 enum actions {
-  email,
-  google,
-  emailSubmited,
+  email = 0,
+  google = 1,
+  emailSubmited = 2,
 }
 
 export type SignUpT = {
@@ -84,7 +85,9 @@ export function SignUpAction({
           )}
         </MotionWrapper>
       );
-    } else if (signUpState.value === "google") {
+    }
+
+    if (signUpState.value === "google") {
       return (
         <MotionWrapper>
           <GoogleSignin />
@@ -93,7 +96,9 @@ export function SignUpAction({
           </Button>
         </MotionWrapper>
       );
-    } else if (signUpState.value === "email") {
+    }
+
+    if (signUpState.value === "email") {
       return (
         <MotionWrapper>
           <span className="text-2xl font-semibold text-neutral-200 mb-6 text-center">
@@ -109,7 +114,9 @@ export function SignUpAction({
           </Button>
         </MotionWrapper>
       );
-    } else if (signUpState.value === "emailSubmited") {
+    }
+
+    if (signUpState.value === "emailSubmited") {
       return (
         <MotionWrapper>
           <span className="text-2xl font-semibold text-neutral-200 mb-6 text-center">
@@ -135,9 +142,9 @@ export function SignUpAction({
           </Button>
         </MotionWrapper>
       );
-    } else {
-      return null;
     }
+
+    return null;
   };
 
   return (

@@ -1,8 +1,9 @@
 "use client";
 
+import type { SignUpT } from "@/app/[locale]/(public)/signup/signup-buttons";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { createClient } from "@vooster/supabase/client";
 import { Button } from "@vooster/ui/button";
-import { Input } from "@vooster/ui/input";
 import {
   Form,
   FormControl,
@@ -10,11 +11,9 @@ import {
   FormItem,
   FormMessage,
 } from "@vooster/ui/form";
-import { z } from "zod";
+import { Input } from "@vooster/ui/input";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
-import { SignUpT } from "@/app/[locale]/(public)/signup/signup-buttons";
+import { z } from "zod";
 
 const formSchema = z.object({
   email: z
@@ -71,7 +70,7 @@ export function EmailSignupForm({
         />
         <Button
           type="submit"
-          variant={"secondary"}
+          variant={"default"}
           className="w-full"
           size={"xl"}
         >
