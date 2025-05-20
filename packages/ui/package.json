@@ -2,6 +2,7 @@
   "name": "@vooster/ui",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "sideEffects": false,
   "files": [
     "tailwind.config.ts",
@@ -58,12 +59,15 @@
     "./textarea": "./src/components/textarea.tsx",
     "./toggle": "./src/components/toggle.tsx",
     "./tooltip": "./src/components/tooltip.tsx",
+    "./tree": "./src/components/tree.tsx",
     "./icons": "./src/components/icons.tsx",
     "./tailwind.config": "./tailwind.config.ts",
     "./postcss.config": "./postcss.config.mjs",
     "./hooks/use-mobile": "./src/hooks/use-mobile.ts"
   },
   "dependencies": {
+    "@headless-tree/core": "^1.0.1",
+    "@headless-tree/react": "^1.0.1",
     "@hookform/resolvers": "^3.9.1",
     "@radix-ui/react-alert-dialog": "^1.1.13",
     "@radix-ui/react-avatar": "^1.1.3",
