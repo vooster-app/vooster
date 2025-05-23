@@ -66,6 +66,19 @@ Everything you need to build a production ready SaaS, it's a opinionated stack b
 └── README.md
 ```
 
+## Package Documentation
+
+Each package in the monorepo has its own documentation:
+
+- [@vooster/supabase](./packages/supabase/README.md) - Type-safe database access and authentication
+- [@vooster/ui](./packages/ui/README.md) - Shared UI components and styling
+
+## App Documentation
+
+Each app in the monorepo has its own documentation:
+
+- [API](./apps/api/README.md) - Supabase API, Auth, Storage, Realtime, and Edge Functions
+
 ## Prerequisites
 
 Bun<br>
