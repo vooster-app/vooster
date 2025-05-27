@@ -1,16 +1,18 @@
+import { getSession } from "@vooster/supabase/cached-queries";
 import Image from "next/image";
-import { SignUpAction } from "./signup-buttons";
 import { redirect } from "next/navigation";
-import { getUserQuery } from "@vooster/supabase/queries";
+import { SignUpAction } from "./signup-buttons";
 
 export const metadata = {
   title: "Vooster",
 };
 
-export default async function Page() {
-  const { data } = await getUserQuery();
+export const runtime = "edge";
 
-  if (data?.user) {
+export default async function Page() {
+  const { data } = await getSession();
+
+  if (data?.session?.user) {
     return redirect("/");
   }
 

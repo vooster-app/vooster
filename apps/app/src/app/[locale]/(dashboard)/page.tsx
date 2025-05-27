@@ -6,6 +6,8 @@ export const metadata = {
   title: "Home",
 };
 
+export const runtime = "edge";
+
 export default async function Page() {
   const { data } = await getSession();
   const t = await getI18n();

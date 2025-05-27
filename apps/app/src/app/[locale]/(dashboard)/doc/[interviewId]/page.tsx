@@ -18,6 +18,8 @@ interface DocumentPageProps {
   };
 }
 
+export const runtime = "edge";
+
 export default async function DocumentPage({ params }: DocumentPageProps) {
   const user = await getUser();
   const supabase = createClient();

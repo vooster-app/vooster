@@ -7,6 +7,8 @@ export const metadata = {
   title: "Vooster",
 };
 
+export const runtime = "edge";
+
 export default async function Page() {
   const { data } = await getSession();
 
