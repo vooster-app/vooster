@@ -5,6 +5,9 @@
   "scripts": {
     "dev": "next dev -p 3001",
     "build": "next build",
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "preview": "bun run pages:build && wrangler pages dev",
+    "deploy": "bun run pages:build && wrangler pages deploy",
     "clean": "git clean -xdf .next .turbo node_modules",
     "lint": "biome lint",
     "format": "biome format --write .",
@@ -20,7 +23,7 @@
     "next": "14.2.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tailwindcss": "^4.1.4",
+    "tailwindcss": "^4.1.6",
     "usehooks-ts": "^3.1.0"
   },
   "devDependencies": {

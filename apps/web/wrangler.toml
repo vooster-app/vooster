@@ -1,0 +1,4 @@
+name = "vooster-web"                       # must be unique inside your CF account
+compatibility_date = "2025-05-27"  # today’s date works
+compatibility_flags = ["nodejs_compat"]  # lets you reach Node APIs
+pages_build_output_dir = ".vercel/output/static"
