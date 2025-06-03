@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@vooster/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -12,60 +13,83 @@ import Image from "next/image";
 import Link from "next/link";
 import { SubscribeForm } from "./subscribe-form";
 
+const Links = [
+  {
+    label: "Features",
+    href: "/features",
+  },
+  {
+    label: "How it works",
+    href: "/how-it-works",
+  },
+  {
+    label: "Roadmap",
+    href: "/roadmap",
+  },
+];
+
+function NavLink({ href, label }: { href: string; label: string }) {
+  return (
+    <li className="list-none">
+      <Link
+        href={href}
+        className="text-sm px-3 flex items-center justify-center bg-none text-[#8a8f98] rounded-md h-8 hover:text-[#8a8f98]/70 transition-colors duration-100"
+      >
+        {label}
+      </Link>
+    </li>
+  );
+}
+
 export function Header() {
   return (
-    <header className="absolute top-0 w-full flex items-center justify-between p-4 z-10">
-      <span className="hidden md:block text-sm font-medium">vooster.app</span>
-
-      <Link href="/">
-        <Image
-          src="/logo.png"
-          alt="vooster logo"
-          width={60}
-          quality={100}
-          height={60}
-          className="md:absolute md:left-1/2 md:top-5 md:-translate-x-1/2"
-        />
-      </Link>
-
-      {/* <nav className="md:mt-2">
-        <ul className="flex items-center gap-4">
-          <li>
-            <a
-              href="https://github.com/midday-ai/vooster"
-              className="text-sm px-4 py-2 bg-primary text-secondary rounded-full font-medium"
+    <div>
+      <header className="fixed top-0 backdrop-blur-sm inset-0 z-100 bg-[var(--linear-header-bg)] mx-auto h-16 border-b border-[var(--linear-border)]">
+        <nav className="flex items-center h-full">
+          <div className="relative w-full max-w-5xl mx-auto">
+            <ul
+              className="list-none flex items-center justify-between gap-2"
+              dir="ltr"
+              data-orientation="horizontal"
+              aria-label="Site navigation"
             >
-              Github
-            </a>
-          </li>
-          <li>
-            <Dialog>
-              <DialogTrigger
-                className="text-sm px-4 py-2 bg-secondary text-primary rounded-full font-medium cursor-pointer"
-                asChild
-              >
-                <span>Get updates</span>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Stay updated</DialogTitle>
-                  <DialogDescription>
-                    Subscribe to our newsletter to get the latest news and
-                    updates.
-                  </DialogDescription>
-                </DialogHeader>
-
-                <div className="flex flex-col gap-4">
-                  <SubscribeForm
-                    group="vooster-newsletter"
-                    placeholder="Email address"
+              <li className="flex items-start">
+                <Link
+                  href="/"
+                  className="flex-1 flex items-center justify-center px-2 h-8"
+                >
+                  <Image
+                    src="/wordmark-light.png"
+                    alt="vooster logo"
+                    width={100}
+                    quality={100}
+                    height={100}
                   />
-                </div>
-              </DialogContent>
-            </Dialog>
-          </li>
-        </ul>
-      </nav> */}
-    </header>
+                </Link>
+              </li>
+              <div className="flex items-center gap-2">
+                {Links.map((link) => (
+                  <NavLink
+                    key={link.href}
+                    href={link.href}
+                    label={link.label}
+                  />
+                ))}
+              </div>
+              <div className="flex items-center gap-2">
+                <li className="list-none">
+                  <Link
+                    href="/#"
+                    className="text-sm px-3 flex items-center justify-center bg-none text-[#8a8f98] rounded-md h-8 hover:text-[#8a8f98]/70 transition-colors duration-100"
+                  >
+                    Talk to founders
+                  </Link>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </nav>
+      </header>
+    </div>
   );
 }

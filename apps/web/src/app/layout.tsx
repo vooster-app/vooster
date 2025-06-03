@@ -1,3 +1,4 @@
+import "./globals.css";
 import "@vooster/ui/globals.css";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -72,13 +73,11 @@ export default function RootLayout({
       <body
         className={cn(
           `${GeistSans.variable} ${GeistMono.variable}`,
-          "antialiased dark"
+          "antialiased dark font-sans",
         )}
       >
         <Header />
         {children}
-        <Footer />
-
         <AnalyticsProvider />
       </body>
     </html>

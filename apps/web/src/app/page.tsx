@@ -1,74 +1,93 @@
-import { AnimatedText } from "@/components/animated-text";
-import { CopyText } from "@/components/copy-text";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@vooster/ui/tooltip";
+import { FeaturesSection } from "@/components/sections/features-section";
+import { QuoteCta } from "@/components/sections/quote-cta";
+import { SecondFeaturesSection } from "@/components/sections/second-features-section";
+import { Button, buttonVariants } from "@vooster/ui/button";
+import Image from "next/image";
+import Link from "next/link";
+
+function Hero() {
+  return (
+    <div className="relative w-full min-h-screen h-full mx-auto flex flex-col gap-4 items-start justify-center">
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        <Image
+          src="/hero-waves.png"
+          alt="Hero background waves"
+          width={1920}
+          height={1080}
+          className="w-full h-full object-cover opacity-80"
+          priority
+          quality={90}
+          sizes="100vw"
+          style={{
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
+        />
+      </div>
+      <div className="relative z-10 flex flex-col gap-4 items-start justify-center w-full mx-auto px-4 max-w-5xl">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/40 backdrop-blur-sm px-4 py-0.5 pb-3">
+          <span className="text-sm text-white/70">building in public</span>
+          <div className="size-4 rounded-full bg-white/10 flex items-center justify-center">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              className="text-white/70"
+            >
+              <path
+                d="M2.5 6H9.5M9.5 6L6 2.5M9.5 6L6 9.5"
+                stroke="currentColor"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+        <h1 className="text-6xl w-full">
+          Turn rough ideas into live, intelligent projects fast
+        </h1>
+        <p className="text-[21px] opacity-70 max-w-2xl">
+          Vooster interviews your brain one question at a time, auto‑builds a
+          clean knowledge base, and gives you an AI partner that already "gets"
+          your business.
+        </p>
+        <div className="flex flex-row gap-2 pt-4 items-center justify-start w-full">
+          <Link
+            href="#"
+            className={buttonVariants({
+              size: "md",
+              variant: "auto",
+              className: "text-black bg-white text-sm px-6 py-2",
+            })}
+          >
+            Join the waitlist
+          </Link>
+          <Link
+            href="#"
+            className={buttonVariants({
+              size: "md",
+              variant: "auto",
+              className:
+                "text-sm px-6 py-2 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent",
+            })}
+          >
+            Talk to founders {" >"}
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Page() {
   return (
-    <div className="h-screen w-screen flex flex-col items-center justify-center relative overflow-hidden">
-      <div className="absolute -top-[118px] inset-0 bg-[linear-gradient(to_right,#222_1px,transparent_1px),linear-gradient(to_bottom,#222_1px,transparent_1px)] bg-[size:4.5rem_2rem] -z-10 [transform:perspective(1000px)_rotateX(-63deg)] h-[80%] pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent pointer-events-none -z-10" />
-
-      <h1 className="font-sans text-[40px] md:text-[84px] relative z-10 text-center h-[120px] md:h-auto leading-tight">
-        <AnimatedText text="Contextualized strategies" />
-      </h1>
-
-      <p className="font-mono relative z-10 text-center max-w-[80%] mt-0 md:mt-4">
-        Coming soon
-      </p>
-
-      {/* In process */}
-      {/* <span className="relative z-10 text-center text-[#878787] text-xs mt-2">
-        Security verified by Kenshū.
-      </span> */}
-
-      {/* <div className="mt-10 mb-8">
-        <CopyText value="bunx degit midday-ai/vooster v1" />
-      </div> */}
-
-      {/* <TooltipProvider delayDuration={0}>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <a
-              href="https://news.ycombinator.com/item?id=41408929"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div className="flex items-center gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width={16}
-                  height={16}
-                  fill="none"
-                >
-                  <g clipPath="url(#a)">
-                    <path
-                      fill="#F60"
-                      d="M0 0v16h16V0H0Zm8.7 9.225v3.925H7.275V9.225L3.775 2.3h1.65L8 7.525 10.65 2.3h1.55L8.7 9.225Z"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="a">
-                      <path fill="#fff" d="M0 0h16v16H0z" />
-                    </clipPath>
-                  </defs>
-                </svg>
-                <span className="text-sm">Live on Hacker News</span>
-              </div>
-            </a>
-          </TooltipTrigger>
-          <TooltipContent side="bottom" sideOffset={15} className="text-xs">
-            Show HN: vooster – An open-source starter kit for your next project
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider> */}
-
-      <div className="absolute -bottom-[280px] inset-0 bg-[linear-gradient(to_right,#222_1px,transparent_1px),linear-gradient(to_bottom,#222_1px,transparent_1px)] bg-[size:4.5rem_2rem] -z-10 [transform:perspective(560px)_rotateX(63deg)] pointer-events-none" />
-      <div className="absolute w-full bottom-[100px] h-1/2  bg-gradient-to-b from-background to-transparent pointer-events-none -z-10" />
+    <div className="min-h-screen w-screen flex flex-col items-center justify-center relative overflow-hidden">
+      <Hero />
+      <FeaturesSection />
+      <SecondFeaturesSection />
+      <QuoteCta />
     </div>
   );
 }
