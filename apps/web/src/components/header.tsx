@@ -11,7 +11,6 @@ import {
 } from "@vooster/ui/dialog";
 import Image from "next/image";
 import Link from "next/link";
-import { SubscribeForm } from "./subscribe-form";
 
 const Links = [
   {
